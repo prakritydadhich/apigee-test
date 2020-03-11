@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<VerifyAPIKey async="false" continueOnError="false" enabled="true" name="apiKeyHeader">
+  <Properties/>
+  <APIKey ref="request.header.apikey"/>
+</VerifyAPIKey>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ProxyEndpoint name="default">
+  <Description>Swagger Petstore</Description>
+  <PreFlow name="PreFlow">
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="listPets">
+      <Condition>(proxy.pathsuffix MatchesPath &quot;/pets&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+      <Description>List all pets</Description>
+      <Request>
+        <Step>
+          <Name>quotaAnil</Name>
+        </Step>
+        <Step>
+          <Name>spikearrest</Name>
+        </Step>
+        <Step>
+          <Name>cache</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>cache</Name>
+        </Step>
+      </Response>
+    </Flow>
+    <Flow name="createPets">
+      <Condition>(proxy.pathsuffix MatchesPath &quot;/pets&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+      <Description>Create a pet</Description>
+      <Request/>
+      <Response/>
+    </Flow>
+    <Flow name="showPetById">
+      <Condition>(proxy.pathsuffix MatchesPath &quot;/pets/{petId}&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+      <Description>Info for a specific pet</Description>
+      <Request>
+        <Step>
+          <Name>verifyAccessToken</Name>
+        </Step>
+        <Step>
+          <Name>verifyAccessToken</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/v1</BasePath>
+    <VirtualHost>default</VirtualHost>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

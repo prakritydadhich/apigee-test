@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Quota async="false" continueOnError="false" enabled="true" name="quotaAnil" type="calendar">
+  <DisplayName>quotaAnil</DisplayName>
+  <Allow count="2500" countRef="request.header.allowed_quota"/>
+  <Interval ref="request.header.quota_count">2</Interval>
+  <Distributed>false</Distributed>
+  <Synchronous>false</Synchronous>
+  <TimeUnit ref="request.header.quota_timeout">day</TimeUnit>
+  <StartTime>2020-03-10 15:15:13</StartTime>
+</Quota>
